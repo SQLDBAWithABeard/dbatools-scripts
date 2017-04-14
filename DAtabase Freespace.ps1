@@ -1,7 +1,7 @@
 Get-Help Get-DbaDatabaseFreespace -ShowWindow
 
 # details for a single instance
-$server = ''
+$server = 'SQL2016N1'
 Get-DbaDatabaseFreespace -sqlserver $server
 
 # For a number of instances
