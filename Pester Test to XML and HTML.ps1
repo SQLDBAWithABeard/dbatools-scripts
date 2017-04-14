@@ -1,24 +1,20 @@
+$Config = (Get-Content TestConfig.JSON) -join "`n" | ConvertFrom-Json
 $Date = Get-Date -Format ddMMyyyHHmmss
-$tempFolder = 'c:\temp\BackupTests\'
-$pesterLocation = 'GIT:\dbatools-scripts'
-Push-Location $tempFolder
-$XML = $tempFolder + "TestResults_$Date.xml"
-$script = 'C:\temp\BackupPester.ps1' # name and location of the pester test - use one of these https://github.com/SQLDBAWithABeard/dbatools-scripts
-cd $pesterLocation
-Invoke-Pester -Tag Server -OutputFile $xml -OutputFormat NUnitXml # You can use Server, Database, Detailed, Backup, DBCC, Column, Identity, Collation
+$XML = $Config.XMLHTML.Path + $Config.XMLHTML.FileName + "_$Date.xml"
+Set-Location $Config.XMLHTML.pesterLocation
+Invoke-Pester -OutputFile $xml -OutputFormat NUnitXml
 
 #download and extract ReportUnit.exe
-Push-Location $tempFolder
+Set-Location $Config.XMLHTML.Path 
 $url = 'http://relevantcodes.com/Tools/ReportUnit/reportunit-1.2.zip'
-$fullPath = Join-Path $tempFolder $url.Split("/")[-1]
-$reportunit = $tempFolder + '\reportunit.exe'
+$reportunit = $Config.XMLHTML.Path + '\reportunit.exe'
 if((Test-Path $reportunit) -eq $false)
 {
 (New-Object Net.WebClient).DownloadFile($url,$fullPath)
-Expand-Archive -Path $fullPath -DestinationPath $tempFolder
+Expand-Archive -Path $fullPath -DestinationPath $Config.XMLHTML.Path
 }
 
 #run reportunit against report.xml and display result in browser
-$HTML = $tempFolder  + 'index.html'
-& .\reportunit.exe $tempFolder
+$HTML = $Config.XMLHTML.Path + 'index.html'
+& .\reportunit.exe $Config.XMLHTML.Path
 Invoke-Item $HTML
