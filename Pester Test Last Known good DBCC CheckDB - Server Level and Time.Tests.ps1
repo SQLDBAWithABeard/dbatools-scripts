@@ -19,6 +19,7 @@ if(!$SQLServers){Write-Warning "No Servers to Look at - Check the config.json"}
         Param($Name)
         $DBCC = Get-DbaLastGoodCheckDb -SqlServer $Name -Detailed -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
         ($DBCC | Measure-Object -Property  DaysSinceLastGoodCheckdb -Maximum).Maximum | Should BeLessThan  $($Config.DBCCServerTime.Daysold) 
+        $DBCC.ForEach{$_.DaysSinceLastGoodCheckdb | Should Not BeNullOrEmpty}
     }
 
 }
