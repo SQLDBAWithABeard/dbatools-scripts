@@ -1,0 +1,66 @@
+{
+    "BackupShare":{
+            "BackupShare": "Z:"  ,
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL200",
+            "Skip":true
+
+        },
+       "CollationDatabase": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL200",
+            "Skip":true
+        },
+    "CollationDatabaseDetailed": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL200",
+            "Skip":true
+        },
+    "CollationServer": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL200",
+            "Skip":true
+        },
+    "IdentityColumn": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL2016n3",
+            "Percent": 90,
+            "Skip":false
+        },
+            "IdentityDatabase": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL2016n3",
+            "Percent": 1,
+            "Skip":false
+        },
+          "IdentityServer": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL2016n3",
+            "Percent": 1,
+            "Skip":false
+        },
+            "LastBackup": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL2016n3",
+            "TestServer":"SQLvNextN1",
+            "DaysOld":7,
+            "Skip":false
+        },
+        "DBCCdatabase": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL2016n3",
+            "DaysOld":7,
+            "Skip":false
+        },
+        "DBCCServerTime": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL2016n3",
+            "DaysOld":7,
+            "Skip":false
+        },
+         "DBCCServer": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL2016n3",
+            "Skip":false
+        }
+}
