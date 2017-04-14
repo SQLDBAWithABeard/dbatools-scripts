@@ -1,7 +1,7 @@
 Get-Help Get-DbaDatabaseFreespace -ShowWindow
 
 # details for a single instance
-$server = 'SQL2016N1'
+$server = ''
 Get-DbaDatabaseFreespace -sqlserver $server
 
 # For a number of instances
@@ -21,7 +21,7 @@ Select $database ,Property, $filesize
 
 ## Total Size of all databases on an instance
 
-$server = 'SQL2014Ser12R2'
+$server = ''
 $srv = Connect-DbaSqlServer $server
 $SizeonDisk = @()
 $srv.Databases |ForEach-Object {
