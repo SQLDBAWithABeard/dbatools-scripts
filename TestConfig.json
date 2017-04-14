@@ -73,6 +73,24 @@
             "HyperV": "beardnuc",
             "NameSearch":"SQL",
             "DomainName":"THEBEARD.Local",
+          "Skip":true
+        },
+         "TempDb": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL2016n3",
+            "DomainName":"THEBEARD.Local",
+            "Skip118":false,
+            "SkipNumberofFiles":false,
+            "SkipFileGrowthPercent":false,
+            "SkipFilesonC":true,
+            "SkipFileMaxSize":false,    
+          "Skip":true
+        },
+        "Network": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL",
+            "DomainName":"THEBEARD.Local",
+            "Latency":40,
           "Skip":false
-        }
+        }      
 }
