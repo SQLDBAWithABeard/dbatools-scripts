@@ -1,66 +1,78 @@
 {
+        "XMLHTML":{
+            "Path": "c:\\temp\\BackupTests\\"  ,
+            "FileName": "TestResults",
+            "PesterLocation":"GIT:\\dbatools-scripts",
+           "Skip":true
+        },
     "BackupShare":{
             "BackupShare": "Z:"  ,
             "HyperV": "beardnuc",
-            "NameSearch":"SQL200",
-            "Skip":true
+            "NameSearch":"SQL2016N3",
+           "Skip":true
 
         },
        "CollationDatabase": {
             "HyperV": "beardnuc",
-            "NameSearch":"SQL200",
-            "Skip":true
+            "NameSearch":"SQL2016N3",
+           "Skip":true
         },
     "CollationDatabaseDetailed": {
             "HyperV": "beardnuc",
-            "NameSearch":"SQL200",
-            "Skip":true
+            "NameSearch":"SQL2016N3",
+           "Skip":true
         },
     "CollationServer": {
             "HyperV": "beardnuc",
-            "NameSearch":"SQL200",
-            "Skip":true
+            "NameSearch":"SQL2016N3",
+           "Skip":true
         },
     "IdentityColumn": {
             "HyperV": "beardnuc",
             "NameSearch":"SQL2016n3",
             "Percent": 90,
-            "Skip":false
+           "Skip":true
         },
             "IdentityDatabase": {
             "HyperV": "beardnuc",
             "NameSearch":"SQL2016n3",
             "Percent": 1,
-            "Skip":false
+           "Skip":true
         },
           "IdentityServer": {
             "HyperV": "beardnuc",
             "NameSearch":"SQL2016n3",
             "Percent": 1,
-            "Skip":false
+           "Skip":true
         },
             "LastBackup": {
             "HyperV": "beardnuc",
             "NameSearch":"SQL2016n3",
             "TestServer":"SQLvNextN1",
             "DaysOld":7,
-            "Skip":false
+           "Skip":true
         },
         "DBCCdatabase": {
             "HyperV": "beardnuc",
             "NameSearch":"SQL2016n3",
             "DaysOld":7,
-            "Skip":false
+          "Skip":true
         },
         "DBCCServerTime": {
             "HyperV": "beardnuc",
             "NameSearch":"SQL2016n3",
             "DaysOld":7,
-            "Skip":false
+          "Skip":true
         },
          "DBCCServer": {
             "HyperV": "beardnuc",
             "NameSearch":"SQL2016n3",
-            "Skip":false
+          "Skip":true
+        },
+         "SPN": {
+            "HyperV": "beardnuc",
+            "NameSearch":"SQL",
+            "DomainName":"THEBEARD.Local",
+          "Skip":false
         }
 }
