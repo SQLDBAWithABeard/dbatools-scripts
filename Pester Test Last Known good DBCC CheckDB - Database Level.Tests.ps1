@@ -18,6 +18,7 @@ if(!$SQLServers){Write-Warning "No Servers to Look at - Check the config.json"}
             }
             It "$($DBCCTest.Server) database $($DBCCTest.Database) had a CheckDB run in the last $($Config.DBCCDatabase.Daysold) days" {
             $DBCCTest.DaysSinceLastGoodCheckdb | Should BeLessThan $($Config.DBCCDatabase.Daysold) 
+            $DBCCTest.DaysSinceLastGoodCheckdb | Should Not BeNullOrEmpty
             }   
             It "$($DBCCTest.Server) database $($DBCCTest.Database) has Data Purity Enabled" {
             $DBCCTest.DataPurityEnabled| Should Be $true
