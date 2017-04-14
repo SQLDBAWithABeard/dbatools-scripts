@@ -53,3 +53,4 @@ $SQLServers = (Get-VM -ComputerName $Config.Network.HyperV -ErrorAction Silently
 
 with the method you choose. You can use the TestConfig.Json to filter in the same way if you wish
 
+You can also output to HTML using reportunit.exe in the Pester Test To XML and HTML file
