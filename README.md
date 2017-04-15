@@ -1,5 +1,5 @@
 # dbatools-scripts
-Holds a number of scripts for use with dbatools mainly from the blog posts at [https://sqldbawithabeard/tag/dbatools](https://sqldbawithabeard/tag/dbatools )
+Holds a number of scripts for use with dbatools mainly from the blog posts at [https://sqldbawithabeard.com/tag/dbatools](https://sqldbawithabeard.com/tag/dbatools )
 
 # Pester Tests
 
