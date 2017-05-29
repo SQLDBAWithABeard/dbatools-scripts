@@ -13,14 +13,14 @@ if(!$SQLServers){Write-Warning "No Servers to Look at - Check the config.json"}
         $DBCCTests = Get-DbaLastGoodCheckDb -SqlServer $Server -Detailed -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
         foreach($DBCCTest in $DBCCTests)
         {
-            It "$($DBCCTest.Server) database $($DBCCTest.Database) had a successful CheckDB"{
+            It "$($DBCCTest.SQLInstance) database $($DBCCTest.Database) had a successful CheckDB"{
             $DBCCTest.Status | Should Be 'Ok'
             }
-            It "$($DBCCTest.Server) database $($DBCCTest.Database) had a CheckDB run in the last $($Config.DBCCDatabase.Daysold) days" {
+            It "$($DBCCTest.SQLInstance) database $($DBCCTest.Database) had a CheckDB run in the last $($Config.DBCCDatabase.Daysold) days" {
             $DBCCTest.DaysSinceLastGoodCheckdb | Should BeLessThan $($Config.DBCCDatabase.Daysold) 
             $DBCCTest.DaysSinceLastGoodCheckdb | Should Not BeNullOrEmpty
             }   
-            It "$($DBCCTest.Server) database $($DBCCTest.Database) has Data Purity Enabled" {
+            It "$($DBCCTest.SQLInstance) database $($DBCCTest.Database) has Data Purity Enabled" {
             $DBCCTest.DataPurityEnabled| Should Be $true
             }    
         }
