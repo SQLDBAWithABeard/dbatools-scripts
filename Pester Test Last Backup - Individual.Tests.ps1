@@ -8,7 +8,9 @@ Describe "Last Backup Test results" -Tag Database, Backup {
         }
 
 ## This is getting a list of server name from Hyper-V - You can chagne this to a list of SQL instances
-$SQLServers = (Get-VM -ComputerName $Config.LastBackup.HyperV -ErrorAction SilentlyContinue| Where-Object {$_.Name -like "*$($Config.LastBackup.NameSearch)*" -and $_.State -eq 'Running'}).Name
+# $SQLServers = (Get-VM -ComputerName $Config.LastBackup.HyperV -ErrorAction SilentlyContinue| Where-Object {$_.Name -like "*$($Config.LastBackup.NameSearch)*" -and $_.State -eq 'Running'}).Name
+$SQLServers = 'ROB-XPS', 'ROB-XPS\DAVE', 'ROB-XPS\SQL2016'
+$SQLServers = $SQLServers.Where{$_ -like "*$($Config.LastBackup.NameSearch)*"} 
 if(!$SQLServers){Write-Warning "No Servers to Look at - Check the config.json"}
  $Results = $SQLservers.ForEach{Test-DbaLastBackup -SqlServer $_ -Destination $Config.LastBackup.TestServer -WarningAction SilentlyContinue}
 
@@ -39,7 +41,7 @@ if(!$SQLServers){Write-Warning "No Servers to Look at - Check the config.json"}
             $Result.DBCCResult| Should Be 'Success'
         }
         It "$($Result.Database) on $($Result.SourceServer) Backup Should be less than $($Config.LastBackup.DaysOld) days old" {
-            $Result.BackupTaken| Should BeGreaterThan (Get-Date).AddDays(-$($Config.LastBackup.DaysOld) )
+            $Result.BackupDate| Should BeGreaterThan (Get-Date).AddDays(-$($Config.LastBackup.DaysOld) )
         }
         
     }

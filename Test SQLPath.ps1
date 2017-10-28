@@ -37,17 +37,17 @@ AccountName = 'SQL_DBAs_The_Cool_Ones'
 }
 Block-FileShareAccess @BlockFileShareParams
 
-Get-Help Test-SqlPath -Full
+Get-Help Test-DBASqlPath -Full
 
 ## Test one instance
-Test-SqlPath -SqlServer sql2016n1 -Path \\BackupServer\SQLBackups
+Test-DBaSqlPath -SqlServer sql2016n1 -Path \\BackupServer\SQLBackups
 
 ## check numerous instances
 
 $SQLServers = (Get-VM -ComputerName $HyperVServer).Where{$_.Name -like '*SQL*'}.Name
 foreach($Server in $SQLServers)
 {
-$Test = Test-SqlPath -SqlServer $Server -Path '\\BackupServer\SQLBackups'
+$Test = Test-dbaSqlPath -SqlServer $Server -Path '\\BackupServer\SQLBackups'
     [PSCustomObject]@{
     Server = $Server
     Result = $Test

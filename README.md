@@ -48,7 +48,7 @@ These scripts use gather Server names from a Hyper-V host so if you wish to use 
 If you wish to use a different method to gather your SQL instances then you will need to open the folder in VS Code and use the search and replace to replace the below code
 
 ```PowerShell
-$SQLServers = (Get-VM -ComputerName $Config.Network.HyperV -ErrorAction SilentlyContinue| Where-Object {$_.Name -like "*$($Config.Network.NameSearch)*" -and $_.State -eq 'Running'}).Name
+# $SQLServers = (Get-VM -ComputerName $Config.Network.HyperV -ErrorAction SilentlyContinue| Where-Object {$_.Name -like "*$($Config.Network.NameSearch)*" -and $_.State -eq 'Running'}).Name
 ```
 
 with the method you choose. You can use the TestConfig.Json to filter in the same way if you wish

@@ -6,11 +6,13 @@ Describe "Testing Last Known Good DBCC" -Tag Database, DBCC{
             continue
         }
  ## This is getting a list of server name from Hyper-V - You can chagne this to a list of SQL instances
-$SQLServers = (Get-VM -ComputerName $Config.DBCCDatabase.HyperV -ErrorAction SilentlyContinue| Where-Object {$_.Name -like "*$($Config.DBCCDatabase.NameSearch)*" -and $_.State -eq 'Running'}).Name
+# $SQLServers = (Get-VM -ComputerName $Config.DBCCDatabase.HyperV -ErrorAction SilentlyContinue| Where-Object {$_.Name -like "*$($Config.DBCCDatabase.NameSearch)*" -and $_.State -eq 'Running'}).Name
+$SQLServers = 'ROB-XPS', 'ROB-XPS\DAVE', 'ROB-XPS\SQL2016'
+$SQLServers = $SQLServers.Where{$_ -like "*$($Config.DBCCDatabase.NameSearch)*"}
 if(!$SQLServers){Write-Warning "No Servers to Look at - Check the config.json"}
    foreach($Server in $SQLServers)
     {
-        $DBCCTests = Get-DbaLastGoodCheckDb -SqlServer $Server -Detailed -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
+        $DBCCTests = Get-DbaLastGoodCheckDb -SqlServer $Server -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
         foreach($DBCCTest in $DBCCTests)
         {
             It "$($DBCCTest.SQLInstance) database $($DBCCTest.Database) had a successful CheckDB"{
